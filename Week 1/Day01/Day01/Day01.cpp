@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "Calculator.h"
+#include "Bots.h"
 
 int AddOne(int localNumber)
 {
@@ -19,9 +20,20 @@ void print(const std::vector<std::string>& names)
         std::cout << index++ << ". " << name << "\n";
 }
 
+//return type. if nothing is returned, use "void" else use the TYPE of the data being returned
+
 
 int main()
 {
+    Bots maintenanceBots;
+    maintenanceBots.MowerBot();
+
+    std::string room = "Kitchen";
+    maintenanceBots.CleaningBot(room);
+
+    std::string foodToEat = "spaghetti";
+    std::string plate = maintenanceBots.CookingBot(foodToEat);//foodToEat is COPIED to recipe
+    std::cout << "Thank you cookingBot. I'm going to enjoy my meal of " << plate << "\n";
     /*
       Calling a method
         use the methods name.
@@ -62,6 +74,7 @@ int main()
             Call the method on the t1000 calculator instance and print the results.
 
     */
+    bool amIEven = t1000.isEven(number);
 
 
 

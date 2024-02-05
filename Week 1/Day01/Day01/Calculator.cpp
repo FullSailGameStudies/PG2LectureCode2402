@@ -9,3 +9,8 @@ double Calculator::mult(double num, double factor)
 {
 	return num * factor;
 }
+
+bool Calculator::isEven(int someNumber)
+{	
+	return someNumber % 2 == 0;
+}
