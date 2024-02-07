@@ -4,13 +4,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 
-bool postFix(std::string& hero)
+bool postFix(std::string& hero, int& universe)
 {
     srand((unsigned int)time(NULL));
-    int postFixNumber = rand() % 1000;
-    hero = hero + "-" + std::to_string(postFixNumber);
-    return postFixNumber % 2 == 0;
+    universe = rand() % 10000;
+    hero = hero + "-" + std::to_string(universe);
+    return universe % 2 == 0;
 }
 
 float average(const std::vector<int>& scores)
@@ -36,8 +37,41 @@ void printInfo(const std::vector<int>& scores)
     std::cout << "size: " << scores.size() << "\tcapacity: " << scores.capacity() << "\n";
 }
 
+void GetARaise(int& salaryToUpdate)
+{
+    salaryToUpdate *= 1.03;
+}
+int GetARaise2(int salaryToUpdate)
+{
+    salaryToUpdate *= 1.03;
+    return salaryToUpdate;
+}
+
+
+void ShowMe(std::string& myName)
+{
+    std::cout << myName << "\n";
+}
+
+void GetTheGradesFor2402(std::vector<float>& course)
+{
+    srand(time(NULL));
+    for (size_t i = 0; i < 10; i++)
+    {
+        course.push_back((rand() % 10001)/100.0F);
+    }
+}
 int main()
 {
+    std::string name = "Batman";
+    ShowMe(name);
+
+    int salary = 10000;
+    //int& mySalary = salary;
+    //mySalary *= 1.03;
+    GetARaise(salary);
+    std::cout << salary << "\n";
+
     /*
         ╔══════════════════════════════╗
         ║Parameters: Pass by Reference.║
@@ -48,7 +82,8 @@ int main()
             This is because the parameter is actually just a new name for the other variable.
     */
     std::string spider = "Spiderman";
-    bool isEven = postFix(spider);
+    int myUniverse = 0;
+    bool isEven = postFix(spider, myUniverse);
     std::string evenResult = (isEven) ? "TRUE" : "FALSE";
     std::cout << spider << "\n" << "Is Even postfix? " << evenResult << "\n";
 
@@ -59,10 +94,17 @@ int main()
             Write a method to fill the vector of floats with grades.
             1) pass it in by reference
             2) add 10 grades to the vector
+            3) print the grades after calling the method
 
     */
     std::vector<float> grades;
-
+    GetTheGradesFor2402(grades);
+    std::cout << "\n$_$_$ PG2 2402 $_$_$\n";
+    for (auto& grade : grades)
+    {
+        //setw(#) - sets the width of the next thing being printed
+        std::cout << std::setw(10) << std::right << grade << "\n";
+    }
 
 
     /*
