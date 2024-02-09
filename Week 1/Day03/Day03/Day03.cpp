@@ -4,14 +4,42 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Student.h"
 
 std::string postFix(std::string fileName, int postFixNumber = 1) //postFixNumber is optional
 {
     return fileName + "_" + std::to_string(postFixNumber);
 }
 
+
+void PrintWhoIAm(std::string name = "Bruce Wayne")
+{
+    std::cout << "Hello. My name is " << name << ".\n";
+}
+
+void batTheme(int numberOfNas = 13)
+{
+    for (size_t i = 0; i < numberOfNas; i++)
+    {
+        std::cout << "na ";
+    }
+    std::cout << "BATMAN!!!\n";
+}
+
+
 int main()
 {
+    //PrintWhoIAm("Bond, James Bond");
+    PrintWhoIAm();
+    PrintWhoIAm();
+    PrintWhoIAm();
+    PrintWhoIAm();
+    PrintWhoIAm();
+    Student steev;
+    steev.PrintGrade(59.6F);
+
+    batTheme();
+    batTheme(150);
 
     /*
         ╔═══════════════════════════════╗
@@ -40,9 +68,11 @@ int main()
         CHALLENGE 1:
 
             Write a method called batTheme.
-            Add an optional parameter to determine how many "na" are printed. The default value should be 13.
+            Add an optional parameter to determine how many "na" are printed. 
+            The default value should be 13.
             
-            If the calling code does not pass a value for the parameter, print "na na na na na na na na na na na na na Batman".
+            If the calling code does not pass a value for the parameter, 
+            print "na na na na na na na na na na na na na Batman".
             If a value is passed, print the number of "na" equal to the value.
             EX: if 6 is passed, print "na na na na na na Batman"
 
@@ -74,7 +104,7 @@ int main()
         scores2.push_back(scores[i]);
 
     //2) assignment "=" operator
-    std::vector<int> scores3 = scores;
+    std::vector<int> scores3 = scores;//makes a copy
 
     //3) passing a vector to the constructor of another vector
     std::vector<int> scores4(scores);
@@ -87,5 +117,8 @@ int main()
             Copy the JLA vector and add some villains to the new vector. Don't modify the original JLA vector.
     */
     std::vector<std::string> JLA = { "Batman", "Wonder Woman", "Superman", "Flash" };
+    std::vector<std::string> newJLA = JLA;
 
+    newJLA.push_back("Aquaman*");//only changes the copy
+    newJLA.erase(newJLA.end() - 1);
 }
