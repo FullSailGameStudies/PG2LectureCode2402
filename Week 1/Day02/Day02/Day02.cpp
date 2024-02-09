@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include "Superhero.h"
 
 bool postFix(std::string& hero, int& universe)
 {
@@ -14,6 +15,8 @@ bool postFix(std::string& hero, int& universe)
     return universe % 2 == 0;
 }
 
+//pass by reference to prevent a COPY of the vector
+//add const to prevent the method from MODIFYING my vector
 float average(const std::vector<int>& scores)
 {
     //scores.push_back(5); //not allowed because it is marked as const
@@ -61,6 +64,20 @@ void GetTheGradesFor2402(std::vector<float>& course)
         course.push_back((rand() % 10001)/100.0F);
     }
 }
+
+void CalcStats(const std::vector<float>& course, float& minGrade, float& maxGrade)
+{
+    minGrade = maxGrade = course[0];
+    for (auto& grade : course)
+    {
+        if (grade < minGrade) minGrade = grade;
+        if (grade > maxGrade) maxGrade = grade;
+        //OR...
+        //minGrade = std::min(grade, minGrade);
+        //maxGrade = std::max(grade, maxGrade);
+    }
+}
+
 int main()
 {
     std::string name = "Batman";
@@ -116,10 +133,27 @@ int main()
         This is the way you pass by reference and prevent the method from changing the variable.
     */
     std::vector<int> highScores;
+    highScores.reserve(10);
+    printInfo(highScores);//size: 0  capacity: 0
     for (int i = 0; i < 10; ++i)
-        highScores.push_back(rand());
+    {
+        highScores.push_back(rand() % 10000);
+        printInfo(highScores);
+    }
     float avg = average(highScores);
 
+    std::cout << highScores[highScores.size() - 1] << "\n";
+    highScores.erase(highScores.begin() + 4);
+    printInfo(highScores);
+    highScores.shrink_to_fit();
+    printInfo(highScores);
+    std::cout << highScores[highScores.size()-1] << "\n";
+    printInfo(highScores);
+    
+
+
+    Superhero notBat("Aquaman");
+    std::cout << "I am " << notBat.GetName() << "!\n";
 
 
     /*
@@ -127,10 +161,14 @@ int main()
 
             Write a method to calculate the stats on a vector of grades
             1) create a method to calculate the min, max. 
-                pass the grades vector as a const reference. Use ref parameters for min and max.
+                pass the grades vector as a const reference. 
+                Use ref parameters for min and max.
             2) call the method in main and print out the min, max.
 
     */
+    float min, max;
+    CalcStats(grades, min, max);
+    std::cout << "\n\nMin grade: " << min << "\nMax Grade: " << max << "\n\n";
 
 
 
@@ -149,14 +187,33 @@ int main()
 
     */
     print(highScores);
-
-    for (size_t i = 0; i < highScores.size();)
+    for (auto i = highScores.begin(); i != highScores.end();)
     {
-        if (highScores[i] < 2500)
-            highScores.erase(highScores.begin() + i);
-        else
-            ++i;
+        if (*i < 2500)
+        {
+            i = highScores.erase(i);
+        }
+        else i++;
     }
+    //for (size_t i = 0; i < highScores.size();)
+    //{
+    //    if (highScores[i] < 2500)
+    //    {
+    //        highScores.erase(highScores.begin() + i);
+    //    }
+    //    else
+    //        i++;
+    //}
+    ////reverse for loop
+    //for (int i = highScores.size() - 1; i >= 0; i--)
+    //{
+    //    if (highScores[i] < 2500)
+    //    {
+    //        highScores.erase(highScores.begin() + i);
+    //    }
+    //}
+
+    print(highScores);
 
 
     /*
