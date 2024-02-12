@@ -26,8 +26,35 @@ unsigned long factorial(unsigned int N)
     return N * factorial(N - 1);
 }
 
+void SomeMethod(int i = 0)
+{
+    if (i<100)
+    {
+        std::cout << i << " Hello Monday. Wish you were Saturday.\n";
+        SomeMethod(i+1);//we have to stop ourselves from calling the method again
+        std::cout << i << " TGIF!!!\n";
+    }
+}
+
+void Bats(int i)
+{
+    //do you have your exit buddy??
+    if (i < 100)
+    {
+        std::cout << (char)78 << (char)65 << ' ';
+        Bats(i + 1);
+    }
+}
+
+
 int main()
 {
+    for (size_t i = 0; i < 10; i++)
+    {
+        std::cout << "The chiefs have won again. yeah.\n";
+    }
+    SomeMethod();
+
     /*
         ╔═════════╗
         ║Recursion║
@@ -39,7 +66,7 @@ int main()
 
     */
     int N = 0;
-    recursiveLoop(N);
+    //recursiveLoop(N);
 
 
     /*
@@ -54,7 +81,8 @@ int main()
             }
     */
     //call Bats here.
-
+    int j = 0;
+    Bats(j);
     char c[] = { '\n', 66, 65, 84, 77, 65, 78, 33, 33 };
     for (auto ch : c) std::cout << ch;
 
