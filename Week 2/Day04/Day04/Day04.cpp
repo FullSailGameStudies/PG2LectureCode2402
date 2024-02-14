@@ -46,6 +46,49 @@ void Bats(int i)
     }
 }
 
+/*
+
+            procedure bubbleSort(A : list of sortable items)
+              n := length(A)
+              repeat
+                  swapped := false
+                  for i := 1 to n - 1 inclusive do
+                      if A[i - 1] > A[i] then
+                          swap(A, i - 1, i)
+                          swapped = true
+                      end if  
+                  end for
+                  n := n - 1
+              while swapped
+            end procedure
+
+*/
+std::vector<int> bubbleSort(std::vector<int> A)
+{
+    int n = A.size();//n := length(A)
+    bool swapped;
+    do
+    {
+        swapped = false;
+        for (size_t i = 1; i < n-1; i++)//for i := 1 to n - 1 inclusive do
+        {
+            if (A[i - 1] > A[i])
+            {
+                //swap(A, i - 1, i)
+                //int temp = A[i];
+                //A[i] = A[i - 1];
+                //A[i - 1] = temp;
+
+                std::swap(A[i - 1], A[i]);
+
+                swapped = true;
+            }//end if
+        }//end for
+        --n;//n = n - 1;
+    } while (swapped);
+    return A;
+}//end procedure
+
 
 int main()
 {
@@ -86,6 +129,30 @@ int main()
     char c[] = { '\n', 66, 65, 84, 77, 65, 78, 33, 33 };
     for (auto ch : c) std::cout << ch;
 
+
+    //N = 10
+    int numbie = 10;
+    for (size_t i = 0; i < numbie; i++)
+    {
+        for (size_t i = 0; i < numbie; i++)
+        {
+            //compare adjacent elements. swap if needed.
+        }
+    }
+
+
+    std::vector<int> numbies{ 13, 7, 0, 5, 1 };
+    std::cout << "\nUNSORTED\n";
+    for (auto& numbie : numbies)
+        std::cout << numbie << " ";
+    std::cout << "\n";
+
+    numbies = bubbleSort(numbies);
+
+    std::cout << "\nSORTED\n";
+    for (auto& numbie : numbies)
+        std::cout << numbie << " ";
+    std::cout << "\n";
 
 
     /*
@@ -130,7 +197,14 @@ int main()
 
     */
     std::string s1 = "Batman", s2 = "Aquaman";
+    std::cout << "\n\n";
     int compResult = _stricmp(s1.c_str(), s2.c_str());
+    if (compResult == 0) //EQUAL TO
+        std::cout << s1 << " EQUALS " << s2 << "\n";
+    else if(compResult < 0) //less than
+        std::cout << s1 << " is LESS THAN " << s2 << "\n";
+    else //if (compResult > 0) //Greater than
+        std::cout << s1 << " is GREATER THAN " << s2 << "\n";
     //OR...
     int compareResult = toUpper(s1).compare(toUpper(s2));
 
