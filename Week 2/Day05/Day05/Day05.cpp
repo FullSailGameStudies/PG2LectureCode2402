@@ -266,6 +266,31 @@ int main()
 
 	*/
 
+	/*
+		CHALLENGE 6:
+
+			Pick any student and curve the grade (add 5) that is stored in the grades map
+
+	*/
+
+	std::string nameToFind;
+	do
+	{
+		std::cout << "Name of student to curve: ";
+		std::getline(std::cin, nameToFind);
+		if (nameToFind.size() == 0) break;
+
+		auto foundStudent = pg2.find(nameToFind);
+		if (foundStudent != pg2.end())
+		{
+			std::cout << nameToFind << " has a grade of " << foundStudent->second << ".\n";
+			foundStudent->second = std::min(100.0, foundStudent->second + 5);
+			std::cout << "Now the grade is " << foundStudent->second << "\n";
+		}
+		else
+			std::cout << nameToFind << " is not in PG2 this month.\n";
+	} while (true);
+
 
 
 
@@ -283,11 +308,4 @@ int main()
 	dorasBackpack[Weapon::Axe] = 1;//updates the count for the axe
 
 
-
-	/*
-		CHALLENGE 6:
-
-			Pick any student and curve the grade (add 5) that is stored in the grades map
-
-	*/
 }

@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include <iomanip>
+#include "Day06.h"
 
 
 enum class Weapon
@@ -12,6 +13,16 @@ enum class Weapon
     Sword, Axe, Spear, Mace
 };
 
+
+void PrintGrades(std::map<std::string, double>& grades)
+{
+    std::cout << "\nWelcome to the DCU\n";
+    for (auto& [hero, grade] : grades)
+    {
+        std::cout << std::setw(8) << std::left << hero << " ";
+        std::cout << std::setw(7) << grade << "\n";
+    }
+}
 
 int main()
 {
@@ -27,20 +38,20 @@ int main()
         erase(key) -- returns the # of items removed
 
     */
-    std::map<Weapon, int> backpack;
-    auto inserted = backpack.insert(std::make_pair(Weapon::Sword, 5));
-    backpack[Weapon::Axe] = 3;
+    std::map<Weapon, int> dorasbackpack;
+    auto inserted = dorasbackpack.insert(std::make_pair(Weapon::Sword, 5));
+    dorasbackpack[Weapon::Axe] = 3;
 
-    size_t numberRemoved = backpack.erase(Weapon::Sword);
+    size_t numberRemoved = dorasbackpack.erase(Weapon::Sword);
     if (numberRemoved > 0)
         std::cout << "The Swords were removed.\n";
     else
         std::cout << "Sword was not found in the map.\n";
 
-    std::map<Weapon, int>::iterator found = backpack.find(Weapon::Axe);
-    if (found != backpack.end())
+    std::map<Weapon, int>::iterator found = dorasbackpack.find(Weapon::Axe);
+    if (found != dorasbackpack.end())
     {
-        backpack.erase(found);
+        dorasbackpack.erase(found);
         std::cout << "The Axes were removed.\n";
     }
     else
@@ -73,4 +84,27 @@ int main()
     grades["Clark"] = rand() % 101;
     grades["Arthur"] = rand() % 101;
     grades["Barry"] = rand() % 101;
+
+    while (true)
+    {
+        PrintGrades(grades);
+        std::cout << "Name of the student to drop: ";
+        std::string name;
+        std::getline(std::cin, name);
+        if (name.size() == 0) break;
+
+        std::cout << "Dropping " << name << " from the DCU\n";
+        size_t result = grades.erase(name);
+        if (result > 0)
+        {
+            std::cout << name << " was removed from the DCU.\n";
+            auto iterator = grades.find(name);
+            if (iterator == grades.end())
+                std::cout << "VERIFIED!\n";
+            else
+                std::cout << "Something went horribly wrong.\n";
+        }
+        else
+            std::cout << name << " was not found in the DCU.\n";
+    }
 }
