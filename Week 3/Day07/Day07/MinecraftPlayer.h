@@ -6,6 +6,16 @@ class MinecraftPlayer
 	//What describes the object? (data/fields)
 
 public:
+	// ctors (constructors)
+	// IFF you do not have any ctor in your code,
+	// the compiler will give you an empty default ctor
+	// If you provide any ctor of your own,
+	// the compiler ctor is not created
+	MinecraftPlayer();//default ctor (no parameters)
+
+	MinecraftPlayer(float hearts, float food, float armor);
+
+public:
 	//getters (accessors) of your fields
 	float GetHearts() const	{ return hearts_; }
 	float Food() const { return food_; }

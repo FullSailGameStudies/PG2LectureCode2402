@@ -82,10 +82,10 @@ int main()
             And create an instance of the Person class here in main
     */
 
-    MinecraftPlayer steev;//creating an instance of the MinecraftPlayer class
+    MinecraftPlayer steev;// (1, 3, 5);//creating an instance of the MinecraftPlayer class
     Person peep;
 
-    steev.Food(20);
+    //steev.Food(20);
 
 
 
