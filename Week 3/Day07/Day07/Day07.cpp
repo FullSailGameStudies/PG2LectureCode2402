@@ -2,6 +2,8 @@
 //
 
 #include <iostream>
+#include "MinecraftPlayer.h"
+#include "Person.h"
 
 
 /*              CLASSESS
@@ -49,13 +51,6 @@ int main()
     
     */
 
-    /*
-        CHALLENGE:
-
-            Create a Person class.
-            Right-Click the project and select "Add > Class..."
-
-    */
 
 
 
@@ -75,8 +70,20 @@ int main()
 
     /*
         CHALLENGE:
-            Add an age field and a name field to the Person class
+
+            Create a Person class.
+            Right-Click the project and select "Add > Class..."
+
     */
+    /*
+        CHALLENGE:
+            Add an age field and a name field to the Person class
+
+            And create an instance of the Person class here in main
+    */
+
+    MinecraftPlayer steev;//creating an instance of the MinecraftPlayer class
+    Person peep;
 
 
 
