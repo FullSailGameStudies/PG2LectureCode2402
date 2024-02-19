@@ -85,7 +85,7 @@ int main()
     MinecraftPlayer steev;//creating an instance of the MinecraftPlayer class
     Person peep;
 
-
+    steev.Food(20);
 
 
 
@@ -107,10 +107,6 @@ int main()
     */
 
 
-    /*
-        CHALLENGE:
-            write an ItsMyBirthday method. increment age and print out a happy message.
-    */
 
 
 
@@ -139,13 +135,17 @@ int main()
 
 
     /*
+        CHALLENGE:
+            write an ItsMyBirthday method. increment age and print out a happy message.
+    */
+    /*
 
         CHALLENGE:
             Add Age getter/setter to provide access to the mAge field
             Add a Name getter/setter for the mName field
     */
 
-
+    peep.ItsMyBirthday();
 
 
     /*
