@@ -6,6 +6,7 @@
 #include "Inheritance.h"
 #include "Polymorphism.h"
 #include "Car.h"
+#include "FlyingCar.h"
 
 
 int main()
@@ -39,7 +40,9 @@ int main()
 			Lecture Code: add a FlyingCar class that derives from Car
              
     */
-
+	Car myRide(2024, "Tesla", "Cybertruck");
+	FlyingCar jetsons(2035, "Tesla", "Cyberplane", 4000, 200);
+	std::cout << jetsons.vehicleInformation() << "\n";
 
 
 	/*
