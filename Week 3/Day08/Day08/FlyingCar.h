@@ -1,5 +1,6 @@
 #pragma once
 #include "Car.h"
+#include <iostream>
 
 class FlyingCar : public Car
 {
@@ -14,7 +15,7 @@ public:
 		maxAltitude_(maxAlt), 
 		maxAirspeed_(maxAirspeed)
 	{
-
+		std::cout << std::to_string(mModelYear) << " " << mMake << " " << mModel;
 	}
 
 private:

@@ -7,6 +7,7 @@
 #include "Polymorphism.h"
 #include "Car.h"
 #include "FlyingCar.h"
+#include "Pickaxe.h"
 
 
 int main()
@@ -44,6 +45,17 @@ int main()
 	FlyingCar jetsons(2035, "Tesla", "Cyberplane", 4000, 200);
 	std::cout << jetsons.vehicleInformation() << "\n";
 
+	Pickaxe picky;
+	picky.AddEnchantment("Sharpness V");
+	picky.AddEnchantment("Fire Aspect I");
+
+	Pickaxe goldenBoy;
+	goldenBoy.AddEnchantment("Efficiency III");
+
+	Pickaxe brandNewPickaxe = picky + goldenBoy;
+	//picky += goldenBoy;
+
+	brandNewPickaxe.Tooltip();
 
 	/*
         ╔*************╗
