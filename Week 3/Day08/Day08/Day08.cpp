@@ -41,9 +41,22 @@ int main()
 			Lecture Code: add a FlyingCar class that derives from Car
              
     */
-	Car myRide(2024, "Tesla", "Cybertruck");
+	Car cyberTruck(2024, "Tesla", "Cybertruck");
 	FlyingCar jetsons(2035, "Tesla", "Cyberplane", 4000, 200);
 	std::cout << jetsons.vehicleInformation() << "\n";
+
+	Car myRide = jetsons; //??? what does this do? COPIES the car parts of the jetsons to myRide
+	std::cout << myRide.vehicleInformation() << "\n";
+
+	std::vector<std::unique_ptr<Car>> garage;
+	garage.push_back(std::make_unique<Car>(2024, "Tesla", "Cybertruck"));
+	garage.push_back(std::make_unique<FlyingCar>(2024, "Tesla", "Cybertruck", 4000, 200));//UPCASTING from FlyingCar to Car
+	std::cout << "\nJay's Garage\n";
+	for (auto& car : garage)
+	{
+		std::cout << "\n" << car->vehicleInformation() << "\n";
+	}
+
 
 	Pickaxe picky;
 	picky.AddEnchantment("Sharpness V");
@@ -56,6 +69,8 @@ int main()
 	//picky += goldenBoy;
 
 	brandNewPickaxe.Tooltip();
+
+	Pickaxe::PickaxeDebugger();//use the name of the class to call static methods
 
 	/*
         ╔*************╗

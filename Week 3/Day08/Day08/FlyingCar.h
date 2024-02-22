@@ -15,8 +15,10 @@ public:
 		maxAltitude_(maxAlt), 
 		maxAirspeed_(maxAirspeed)
 	{
-		std::cout << std::to_string(mModelYear) << " " << mMake << " " << mModel;
+		//std::cout << std::to_string(mModelYear) << " " << mMake << " " << mModel;
 	}
+
+	std::string vehicleInformation() override;//override keyword is optional
 
 private:
 	int maxAltitude_, maxAirspeed_;
