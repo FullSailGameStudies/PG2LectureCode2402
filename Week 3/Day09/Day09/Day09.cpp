@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "static.h"
+#include <memory>
 
 /*
 Nested class
@@ -26,7 +27,7 @@ int main()
     {
         demo();
     }
-
+    std::cout << "\n\n";
 
 
 
@@ -44,10 +45,29 @@ int main()
         That's also why static methods cannot access non-static members.
 
     */
-    Car myRide(1988);
-    Car::reporting();
-    myRide.vehicleInfo();//calling non-static methods. myRide is passed in for 'this'
+    std::unique_ptr<Car> otherCar = nullptr;
+    {
+        Car myRide(1988);
+        Car::reporting();
+        myRide.vehicleInfo();//calling non-static methods. myRide is passed in for 'this'
+    
+        //Car* pCar = &myRide;
+        std::unique_ptr<Car> pCar = std::make_unique<Car>(2025);
+        std::cout << "\nPointer to myRide: " << pCar << "\n";
+        pCar->vehicleInfo();
+    
+        otherCar = std::move(pCar); //copy the memory location to another pointer variable
 
+        pCar->vehicleInfo();
+        //delete pCar;
+        //pCar = nullptr;
+        //otherCar = nullptr;
+    
+    }
+    if (otherCar != nullptr)
+    {
+        otherCar->vehicleInfo();
+    }
     /*
     
         CHALLENGE:
