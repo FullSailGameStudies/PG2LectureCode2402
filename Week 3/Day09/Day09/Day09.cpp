@@ -58,12 +58,18 @@ int main()
     
         otherCar = std::move(pCar); //copy the memory location to another pointer variable
 
-        pCar->vehicleInfo();
+        //pCar->vehicleInfo();
         //delete pCar;
         //pCar = nullptr;
         //otherCar = nullptr;
+
     
     }
+
+    int number = rand() % 100; //0-99
+
+
+
     if (otherCar != nullptr)
     {
         otherCar->vehicleInfo();
