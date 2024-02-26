@@ -209,4 +209,30 @@ int main()
 		hero.serialize(std::cout, ':');
 		std::cout << "\n";
 	}
+
+
+	std::ifstream dcLoadFile(finalPath);
+	std::vector<Super> DC2;
+	if (dcLoadFile.is_open())
+	{
+		std::string dcLine;
+		while (std::getline(dcLoadFile, dcLine))
+		{
+			Super newHero(dcLine, '*');
+			DC2.push_back(newHero);
+		}
+	}
+	else {
+		std::cout << "Could not open file " << finalPath << "\n";
+	}
+	dcLoadFile.close();
+
+
+
+	std::cout << "\n\nDC2 Serialized to cout\n";
+	for (auto& hero : DC2)
+	{
+		hero.serialize(std::cout, ':');
+		std::cout << "\n";
+	}
 }
