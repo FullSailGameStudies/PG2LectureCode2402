@@ -185,4 +185,28 @@ int main()
 		std::cout << "Hello citizen! I am " << hero.Name() << " (aka " << hero.Secret() << ").";
 		std::cout << " I am " << hero.Age() << " years old!!\n";
 	}
+
+	std::string dcFile = "DC.csv";
+	finalPath = filePath + dcFile;
+	std::ofstream dcSaveFile(finalPath);
+	if (dcSaveFile.is_open())
+	{
+		for (auto& hero : DC)
+		{
+			hero.serialize(dcSaveFile, '*');
+			dcSaveFile << "\n";
+		}
+	}
+	else {
+		std::cout << "Could not open file " << finalPath << "\n";
+	}
+	dcSaveFile.close();
+
+
+	std::cout << "\n\nDC Serialized to cout\n";
+	for (auto& hero : DC)
+	{
+		hero.serialize(std::cout, ':');
+		std::cout << "\n";
+	}
 }

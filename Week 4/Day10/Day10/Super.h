@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <fstream>
+
 class Super
 {
 public:
@@ -10,6 +12,8 @@ public:
 	std::string Name() const { return name_; }
 	std::string Secret() const { return secret_; }
 	int Age() const { return age_; }
+
+	void serialize(std::ostream& outputFile, char delimiter);
 
 private:
 	std::string name_, secret_;
